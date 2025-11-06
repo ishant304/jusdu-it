@@ -8,4 +8,7 @@ export default defineConfig({
     host: true,
     allowedHosts: ['.trycloudflare.com'],
   },
+  build: {
+    outDir: "dist"
+  },
 })
