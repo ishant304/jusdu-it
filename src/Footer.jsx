@@ -19,8 +19,8 @@ export default function Footer(){
                 </div>
                 <div className="middle-footer">
                     <h3 className="middle-heading">Quick Links</h3>
-                    <a className="footer-link" href="#home">Home</a>
-                    <a className="footer-link" href="#features">Features</a>
+                    <Link className="footer-link" to='/'>Home</Link>
+                    <Link className="footer-link" to='/#features'>Features</Link>
                     <Link className="footer-link" to='/todolist'>To-do List</Link>
                 </div>
                 <div className="right-footer">
