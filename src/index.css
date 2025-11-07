@@ -27,10 +27,10 @@ body {
 
 .background2 {
   position: fixed;
-  top: 0;
+  top: -200px;
   left: 0;
   width: 100%;
-  bottom: 0;
+  bottom: -400px;
   z-index: -2;
   background-color: black;
 }
@@ -481,6 +481,20 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   border-radius: 6px;
 }
 
+.no-tasks{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  font-size: 100px;
+}
+
+.no-tasks p{
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+
 .todo-list p {
   font-size: 28px;
 }
@@ -563,6 +577,15 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 .chevron-menu {
   display: flex;
   justify-content: space-evenly;
+}
+
+.chevron-menu.complete p{
+  text-decoration: line-through;
+}
+
+.chevron-menu.expired p{
+  opacity: 0.45;
+  text-decoration: line-through;
 }
 
 .desktop-chevron {

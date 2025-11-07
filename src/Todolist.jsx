@@ -1,4 +1,4 @@
-import { faChevronDown, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faChevronDown, faClipboardQuestion, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons"
 import logo from "./assets/logo.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useRef, useState } from "react"
@@ -200,7 +200,10 @@ export default function Todolist() {
                         <p className="deadline">Deadline</p>
                         <p>Actions</p>
                     </div>
-                    {tasks.length === 0 ? <p>No record</p> : (
+                    {tasks.length === 0 ? (<div className="no-tasks">
+                        <FontAwesomeIcon icon={faClipboardQuestion} />
+                        <p>No tasks Yet</p>
+                    </div>) : (
 
 
 
@@ -220,7 +223,7 @@ export default function Todolist() {
                                     </div>
                                 </div>
                                 {openId === unit.id && (
-                                    <div className="chevron-menu">
+                                    <div className={`chevron-menu ${unit.status}`}>
                                         <p className="desktop-chevron">D-Day : {new Date(unit.time).toLocaleDateString("en-IN", {
                                             day: "2-digit",
                                             month: "short",
