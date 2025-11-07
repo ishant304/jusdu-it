@@ -250,9 +250,10 @@ body {
 
 .footer-section {
   margin-top: 70px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 0px 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 0px 50px;
 }
 
 .left-footer {
@@ -329,7 +330,7 @@ body {
   font-size: 60px;
 }
 
-.todo-content{
+.todo-content {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -380,7 +381,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   border-color: #a955f775;
 }
 
-.error{
+.error {
   margin-top: 8px;
   color: rgba(158, 55, 55, 1);
   font-size: 16px;
@@ -413,11 +414,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   transform: translateY(-1px);
 }
 
-.add-btn:active{
+.add-btn:active {
   transform: scale(0.95);
 }
 
-.progress-div{
+.progress-div {
   width: 100%;
   max-width: 1000px;
   display: grid;
@@ -426,7 +427,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   margin-top: 20px;
 }
 
-.progress-info{
+.progress-info {
   background-color: rgba(121, 38, 255, 0.2);
   width: 100%;
   backdrop-filter: blur(10px);
@@ -435,16 +436,16 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.progress-number{
+.progress-number {
   text-align: center;
 }
 
-.progress-caption{
+.progress-caption {
   text-align: center;
   font-size: 22px;
 }
 
-.todo-list{
+.todo-list {
   margin: 80px -10px;
   display: flex;
   flex-direction: column;
@@ -456,11 +457,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   padding: 60px;
 }
 
-.todo-list p{
+.todo-list p {
   font-size: 28px;
 }
 
-.todo-heading{
+.todo-heading {
   flex-direction: row;
   display: flex;
   margin-bottom: 20px;
@@ -468,14 +469,14 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   padding: 0px 30px;
 }
 
-.todo-col{
+.todo-col {
   display: flex;
   flex-direction: row;
-  margin-bottom: 10px;
+  margin: 7px 0px;
   justify-content: space-between;
 }
 
-.todo-left{
+.todo-left {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -483,26 +484,26 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   margin-right: 15px;
 }
 
-.checkbox{
-  width: 18px;
-  height: 18px;
+.checkbox {
+  width: 24px;
+  height: 24px;
   margin-right: 24px;
 }
 
-.todo-middle{
+.todo-middle {
   display: block;
   display: flex;
   align-items: center;
 }
 
-.todo-right{
+.todo-right {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
 }
 
-.todo-right button{
+.todo-right button {
   background-color: transparent;
   color: white;
   border: none;
@@ -513,39 +514,66 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   border-radius: 50%;
 }
 
-.todo-right button:hover{
+.todo-right button:hover {
   background-color: rgba(93, 15, 219, 0.2);
 }
 
-.deadline{
+.deadline {
   display: block;
 }
 
-@media (max-width: 600px){
+.chevron-menu {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-  .footer-section{
+.desktop-chevron {
+  display: block;
+}
+
+.mobile-chevron{
+  display: none;
+}
+
+@media (max-width: 600px) {
+
+  .footer-section {
     display: flex;
     flex-direction: column;
     gap: 40px;
     padding-left: 50px;
   }
 
-  .todo-list{
+  .todo-list {
     padding: 24px;
   }
-  
-  .todo-middle{
+
+  .todo-middle {
     display: none;
   }
 
-  .deadline{
+  .deadline {
     display: none;
   }
 
-  .todo-right button{
-  height: 52px;
-  width: 52px;
-}
+  .todo-right button {
+    height: 52px;
+    width: 52px;
+  }
+
+  .chevron-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .desktop-chevron{
+    display: none;
+  }
+
+  .mobile-chevron{
+    display: block;
+  }
 
   /* .checkbox:checked::after {
   content: "✔";

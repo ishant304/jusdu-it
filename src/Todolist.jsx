@@ -11,7 +11,7 @@ export default function Todolist() {
     const [tasks, setTasks] = useState([])
     const [textError, setTextError] = useState(false)
     const [timeError, setTimeError] = useState(false)
-    const [open,setOpen] = useState(false)
+    const [openId, setOpenId] = useState(null);
     const inputRef = useRef(null);
 
     useEffect(() => {
@@ -76,13 +76,13 @@ export default function Todolist() {
         const hours = Math.floor(diff / (1000 * 60 * 60));
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-        if (days > 0) return `${days} day(s) left`;
-        if (hours > 0) return `${hours} hour(s) left`;
-        return `${minutes} minute(s) left`;
+        if (days > 0) return `${days} day(s)`;
+        if (hours > 0) return `${hours} hour(s)`;
+        return `${minutes} minute(s)`;
     }
 
-    function handleDelete(id){
-        setTasks(tasks.filter(task=>task.id != id))
+    function handleDelete(id) {
+        setTasks(tasks.filter(task => task.id != id))
     }
 
     return (
@@ -131,23 +131,34 @@ export default function Todolist() {
                         <p className="deadline">Deadline</p>
                         <p>Actions</p>
                     </div>
-                    {   tasks.length === 0 ? <p>No record</p> : (
+                    {tasks.length === 0 ? <p>No record</p> : (
                         tasks.map((unit) => (
                             <>
-                            <div className="todo-col">
-                                <div className="todo-left">
-                                    <input className="checkbox" type="checkbox" />
-                                    <p>{unit.task}</p>
+                                <div className="todo-col">
+                                    <div className="todo-left">
+                                        <input className="checkbox" type="checkbox" />
+                                        <p>{unit.task}</p>
+                                    </div>
+                                    <div className="todo-middle">
+                                        <p>{getTimeLeft(unit.time)} left</p>
+                                    </div>
+                                    <div className="todo-right">
+                                        <button onClick={() => handleDelete(unit.id)}><FontAwesomeIcon icon={faTrash} /></button>
+                                        <button onClick={() => setOpenId(openId === unit.id ? null : unit.id)}><FontAwesomeIcon icon={faChevronDown} /></button>
+                                    </div>
                                 </div>
-                                <div className="todo-middle">
-                                    <p>{getTimeLeft(unit.time)}</p>
-                                </div>
-                                <div className="todo-right">
-                                    <button onClick={()=>handleDelete(unit.id)}><FontAwesomeIcon icon={faTrash} /></button>
-                                    <button onClick={()=>setOpen(!open)}><FontAwesomeIcon icon={faChevronDown} /></button>
-                                </div>
-                            </div>
-                            { open && <p>hello</p> }
+                                {openId === unit.id && (
+                                    <div className="chevron-menu">
+                                        <p className="desktop-chevron">D-Day : {new Date(unit.time).toLocaleDateString("en-IN", {
+                                            day: "2-digit",
+                                            month: "short",
+                                            year: "numeric"
+                                        })}</p>
+                                        <p className="desktop-chevron">D-Time : {new Date(unit.time).toLocaleTimeString()}</p>
+
+                                        <p className="mobile-chevron">Deadline : {getTimeLeft(unit.time)} left</p>
+                                    </div>
+                                )}
                             </>
                         )))
                     }
